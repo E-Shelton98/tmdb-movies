@@ -3,6 +3,7 @@
 :root {
   --primary-color: #22254b;
   --secondary-color: #373b69;
+  --font-color :#7378c5;
 }
 
 * {
@@ -38,7 +39,7 @@ header {
 }
 
 .search::placeholder {
-  color: #7378c5;
+  color: var(--font-color);
 }
 
 .search:focus {
@@ -57,7 +58,7 @@ header {
 }
 
 .media-selectors label {
-    color: #7378c5;
+    color: var(--font-color);
 }
 
 input#television,
