@@ -1,5 +1,6 @@
 const MAIN = document.getElementById('main')
 const FORM = document.getElementById('form')
+const 
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
 let searchBar = document.getElementById('search')
 let mediaType = 'tv'
