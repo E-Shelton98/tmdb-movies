@@ -1,11 +1,18 @@
 const MAIN = document.getElementById('main')
 const FORM = document.getElementById('form')
-const 
+const MEDIA = document.getElementsByName('media')
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
 let searchBar = document.getElementById('search')
-let mediaType = 'tv'
 
 getMovies('discover', 'movie')
+
+function getMediaType() {
+  if (MEDIA[0].checked) {
+    return ('tv')
+  } else if (MEDIA[1].checked) {
+    return ('movie')
+  }
+}
 
 async function getMovies(route, mediaType, searchedItem) {
   const DISCOVER = `https://tmdb-movies-backend.herokuapp.com/discover?type=${mediaType}`
@@ -28,7 +35,8 @@ FORM.addEventListener('submit', (e) => {
   e.preventDefault()
   let searchTerm = searchBar.value
   if (searchTerm && searchBar !== '') {
-    getMovies('search', mediaType, searchTerm)
+    let searchedMedia = getMediaType()
+    getMovies('search', searchedMedia, searchTerm)
 
     searchTerm.value = ''
   }
