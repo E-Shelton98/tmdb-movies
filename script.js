@@ -4,8 +4,6 @@ const MEDIA = document.getElementsByName('media')
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
 let searchBar = document.getElementById('search')
 
-getMovies('discover', 'movie')
-
 function getMediaType() {
   if (MEDIA[0].checked) {
     return ('tv')
@@ -31,6 +29,8 @@ async function getMovies(route, mediaType, searchedItem) {
   }
 }
 
+getMovies('discover', 'movie')
+
 FORM.addEventListener('submit', (e) => {
   e.preventDefault()
   let searchTerm = searchBar.value
@@ -46,7 +46,8 @@ function showMovies(movies) {
   MAIN.innerHTML = ''
 
   movies.forEach((movie) => {
-    const { title, poster_path, vote_average, overview } = movie
+    console.log(movie)
+    const { title, name, poster_path, vote_average, overview } = movie
 
     const movieEl = document.createElement('div')
 
@@ -55,10 +56,10 @@ function showMovies(movies) {
     movieEl.innerHTML = `
         <img
           src="${IMG_PATH + poster_path}"
-          alt="${title}"
+          alt="${title || name}"
         />
         <div class="movie-info">
-          <h3>${title}</h3>
+          <h3>${title || name}</h3>
           <span class="${getClassByRate(vote_average)}">${vote_average}</span>
         </div>
         <div class="overview">
