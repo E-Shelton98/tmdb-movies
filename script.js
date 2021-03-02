@@ -46,7 +46,6 @@ function showMovies(movies) {
   MAIN.innerHTML = ''
 
   movies.forEach((movie) => {
-    console.log(movie)
     const { title, name, poster_path, vote_average, overview } = movie
 
     const movieEl = document.createElement('div')
