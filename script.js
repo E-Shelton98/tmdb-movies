@@ -6,9 +6,9 @@ let searchBar = document.getElementById('search')
 
 function getMediaType() {
   if (MEDIA[0].checked) {
-    return ('tv')
+    return 'tv'
   } else if (MEDIA[1].checked) {
-    return ('movie')
+    return 'movie'
   }
 }
 
@@ -45,7 +45,21 @@ FORM.addEventListener('submit', (e) => {
 function showMovies(movies) {
   MAIN.innerHTML = ''
 
-  movies.forEach((movie) => {
+  filteredMovies = movies.filter(checkMovieData)
+
+  function checkMovieData(movie) {
+    console.log(movie)
+    if (
+      (movie.title || movie.name != undefined) &&
+      movie.poster_path != undefined &&
+      movie.vote_average != undefined &&
+      movie.overview != undefined
+    ) {
+      return movie
+    }
+  }
+
+  filteredMovies.forEach((movie) => {
     const { title, name, poster_path, vote_average, overview } = movie
 
     const movieEl = document.createElement('div')
